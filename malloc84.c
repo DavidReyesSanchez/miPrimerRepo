@@ -1,34 +1,31 @@
-/*Reservar memoria con malloc para un array de tipo double 
-para 1000 numeros y comprobar  si el puntero es valido.
-Si el puntero devuelve tipo NULL signfica que no hay 
-suficiente memoria.      */
+/* Pedir al usuario el numero de elementos para un array de numeros enteros, 
+posteriormente comprobar con malloc si hay memoria suficiente (si el puntero es 
+valido, es decir diferente de NULL), si la hay es entonces rellenar ese array con numeros
+aleatorios, si no la hay decir que hay un error en la asignacion de memoria.*/
 
 #include<stdio.h>
-#include<string.h>
 #include<stdlib.h>
 #include<time.h>
 
 int main(){
-double *p_array;
-int i;
+int *p_array,n,i;
+	
+	printf("Digite el total de elementos del array: ");
+	scanf("%i",&n);
+	
+	p_array = malloc(n*sizeof(int));
+	
+	if(p_array == NULL){
+		printf("Error en la Asignacion de memoria");
+	 	return -1;//Intentar recuperar memoria
+	}
+	else{
+		srand(time(NULL));
+		for(i=0;i<n;i++){
+			p_array[i] = 1 + rand()%((n+1)-1);
+			printf("%i. Numero: %i\n",i+1,p_array[i]);
+		}	
+	}
 
-p_array = malloc(1000* sizeof(double));
-
-if (p_array == NULL)
-{
-    printf("No hay suficiente memoria");
-    return -1;
-}
-else{
-    srand(time(NULL));
-    for ( i = 0; i < 1000; i++)
-    {
-        p_array[i] = 1 + rand() % ((1000+1)-1);
-        printf("%.1lf ",p_array[i]); 
-    }
-    
-}
-
-
-return 0;
+	return 0;
 }

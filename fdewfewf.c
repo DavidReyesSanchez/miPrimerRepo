@@ -7,13 +7,15 @@ int main(){
       printf("Digite un numero: ");
       scanf("%i",&n);
 
-        for (int i=1; i+1 <= 2*n; i=i+2)
+        for (int i=1; i <= 2*n; i=i+2)
         {
-          division = (i+1.0)/i; // = (1/i) / (1/(i+1))
+          division = (i+1)/i; // = (1/i) / (1/(i+1))
           multiplicacion *= division;
         }
        
        printf("El resultado es %.2f ", multiplicacion);
+
+
 
 
     return 0;
